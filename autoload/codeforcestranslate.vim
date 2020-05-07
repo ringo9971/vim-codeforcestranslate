@@ -119,6 +119,7 @@ function! codeforcestranslate#main(url) abort
   redir END
 
   execute 'vs ' . s:tmppath
+  execute 'normal l'
 endfunction
 
 function! codeforcestranslate#checksample() abort

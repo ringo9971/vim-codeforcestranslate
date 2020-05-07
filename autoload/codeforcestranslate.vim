@@ -11,7 +11,7 @@ let s:wa = ["__        __     _      _ ","\\ \\      / /    / \\    | |"," \\ \\
 
 let s:dict = {
       \ '\s\+': ' ', '</p> <p>': '\n', '<li>': '\n * ', '\(<.\{-}>\|\$\|\^M\)': '', 
-      \ '\\dots': '...', '\\cdot': 'x', '\\frac{\(.\{-}\)}{\(.\{-}\)}': '\1/\2', 
+      \ '&gt;': '>', '\\dots': '...', '\\cdot': 'x', '\\frac{\(.\{-}\)}{\(.\{-}\)}': '\1/\2', 
       \ '\( \| \)*—\( \| \)*': ' -- ', '\(.document\).*$': '', '': ''
       \ }
 
@@ -102,19 +102,24 @@ function! codeforcestranslate#main(url) abort
 
   let s:tmppath = expand('~/codeforces/list/tmp')
   execute ':redir! > ' . s:tmppath
-      silent! echon '問題文'  . "\n"
+      " silent! echon '問題文'  . "\n"
       silent! echon s:bun     . "\n\n"
-      silent! echon '入力'    . "\n"
+      " silent! echon '入力'    . "\n"
+      silent! echon 'Input'    . "\n"
       silent! echon s:input   . "\n\n"
-      silent! echon '出力'  . "\n"
+      " silent! echon '出力'  . "\n"
+      silent! echon 'Output'  . "\n"
       silent! echon s:output  . "\n\n"
       for i in range(len(s:example)/2)
-        silent! echon '入力例' . (i+1)  . "\n"
+        " silent! echon '入力例' . (i+1)  . "\n"
+        silent! echon 'Example in' . (i+1)  . "\n"
         silent! echon s:example[i*2] . "\n\n"
-        silent! echon '出力例' . (i+1)  . "\n"
+        " silent! echon '出力例' . (i+1)  . "\n"
+        silent! echon 'Example out' . (i+1)  . "\n"
         silent! echon s:example[i*2+1] . "\n\n"
       endfor
-      silent! echon 'ノート'  . "\n"
+      " silent! echon 'ノート'  . "\n"
+      silent! echon 'note'  . "\n"
       silent! echon s:note    . "\n\n"
   redir END
 
